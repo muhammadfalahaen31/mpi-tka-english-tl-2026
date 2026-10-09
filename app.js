@@ -261,8 +261,8 @@ function openTextWorkspace(textId, questionIndex = 0) {
 }
 
 function renderTextWorkspace() {
-  const text = TKA_DATA.texts.find(t => t.id === AppState.selectedTextId);
-  if (!text) return;
+  const targetId = AppState.selectedTextId || 1;
+  const text = TKA_DATA.texts.find(t => String(t.id) === String(targetId)) || TKA_DATA.texts[0];
 
   const headerTitleEl = document.getElementById('workspace-text-title');
   if (headerTitleEl) {
@@ -301,7 +301,7 @@ function renderWorkspaceReading(text) {
 }
 
 function renderWorkspacePractice(text) {
-  const questions = TKA_DATA.questions.filter(q => q.textId === text.id);
+  const questions = TKA_DATA.questions.filter(q => String(q.textId) === String(text.id));
   const qIndex = AppState.currentQuestionIndex;
   const currentQ = questions[qIndex];
   if (!currentQ) return;
@@ -375,8 +375,8 @@ function renderWorkspacePractice(text) {
 }
 
 function renderWorkspaceTextSummary(textId) {
-  const text = TKA_DATA.texts.find(t => t.id === textId);
-  const questions = TKA_DATA.questions.filter(q => q.textId === textId);
+  const text = TKA_DATA.texts.find(t => String(t.id) === String(textId)) || TKA_DATA.texts[0];
+  const questions = TKA_DATA.questions.filter(q => String(q.textId) === String(textId));
   let correctCount = 0;
   let answeredCount = 0;
   const wrongQuestions = [];
@@ -471,21 +471,21 @@ function viewEvidenceInText(textId, snippet, paragraphIndex) {
 // ------------------------------------------
 function jumpToPracticeQuestion(idx) {
   AppState.currentQuestionIndex = idx;
-  const text = TKA_DATA.texts.find(t => t.id === AppState.selectedTextId);
+  const text = TKA_DATA.texts.find(t => String(t.id) === String(AppState.selectedTextId || 1)) || TKA_DATA.texts[0];
   if (text) renderWorkspacePractice(text);
 }
 
 function prevPracticeQuestion() {
   if (AppState.currentQuestionIndex > 0) {
     AppState.currentQuestionIndex--;
-    const text = TKA_DATA.texts.find(t => t.id === AppState.selectedTextId);
+    const text = TKA_DATA.texts.find(t => String(t.id) === String(AppState.selectedTextId || 1)) || TKA_DATA.texts[0];
     if (text) renderWorkspacePractice(text);
   }
 }
 
 function nextPracticeQuestion() {
-  const text = TKA_DATA.texts.find(t => t.id === AppState.selectedTextId);
-  const questions = TKA_DATA.questions.filter(q => q.textId === text.id);
+  const text = TKA_DATA.texts.find(t => String(t.id) === String(AppState.selectedTextId || 1)) || TKA_DATA.texts[0];
+  const questions = TKA_DATA.questions.filter(q => String(q.textId) === String(text.id));
   if (AppState.currentQuestionIndex < questions.length - 1) {
     AppState.currentQuestionIndex++;
     renderWorkspacePractice(text);
@@ -624,7 +624,7 @@ function renderCategorizationTable(q, savedRecord) {
 // ANSWER SUBMISSION & VERIFICATION
 // ------------------------------------------
 function submitCurrentAnswer(qId) {
-  const q = TKA_DATA.questions.find(item => item.id === qId);
+  const q = TKA_DATA.questions.find(item => String(item.id) === String(qId));
   if (!q) return;
 
   let userAnswer = null;
@@ -687,7 +687,7 @@ function submitCurrentAnswer(qId) {
   };
   saveProgress();
 
-  const text = TKA_DATA.texts.find(t => t.id === q.textId);
+  const text = TKA_DATA.texts.find(t => String(t.id) === String(q.textId)) || TKA_DATA.texts[0];
   if (text) renderWorkspacePractice(text);
 }
 
@@ -1451,7 +1451,7 @@ function finishFullTest() {
 // MISTAKE REVIEW & RESET MODAL
 // ==========================================
 function openMistakeReviewModal(textId) {
-  const questions = TKA_DATA.questions.filter(q => q.textId === textId);
+  const questions = TKA_DATA.questions.filter(q => String(q.textId) === String(textId));
   const wrongQuestions = questions.filter(q => {
     const rec = AppState.progress.userAnswers[q.id];
     return rec && !rec.isCorrect;
@@ -1490,7 +1490,7 @@ function retryQuestion(qId) {
   saveProgress();
   closeModal('generic-modal');
   
-  const q = TKA_DATA.questions.find(item => item.id === qId);
+  const q = TKA_DATA.questions.find(item => String(item.id) === String(qId));
   if (q) {
     const textQuestions = TKA_DATA.questions.filter(item => item.textId === q.textId);
     const qIdx = textQuestions.findIndex(item => item.id === qId);

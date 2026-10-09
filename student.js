@@ -277,8 +277,8 @@ function openStudentWorkspace(textId, qIndex = 0) {
 }
 
 function renderStudentWorkspace() {
-  const text = TKA_DATA.texts.find(t => t.id === StudentState.selectedTextId);
-  if (!text) return;
+  const targetId = StudentState.selectedTextId || 1;
+  const text = TKA_DATA.texts.find(t => String(t.id) === String(targetId)) || TKA_DATA.texts[0];
 
   const headerTitleEl = document.getElementById('student-ws-title');
   if (headerTitleEl) {
@@ -320,7 +320,7 @@ function renderStudentReading(text) {
 }
 
 function renderStudentQuestions(text) {
-  const questions = TKA_DATA.questions.filter(q => q.textId === text.id);
+  const questions = TKA_DATA.questions.filter(q => String(q.textId) === String(text.id));
   const qIndex = StudentState.currentQuestionIndex;
   const currentQ = questions[qIndex];
   if (!currentQ) return;
@@ -562,21 +562,21 @@ function handleStudentReasonInput(qId, text) {
 
 function jumpStudentQuestion(idx) {
   StudentState.currentQuestionIndex = idx;
-  const text = TKA_DATA.texts.find(t => t.id === StudentState.selectedTextId);
+  const text = TKA_DATA.texts.find(t => String(t.id) === String(StudentState.selectedTextId || 1)) || TKA_DATA.texts[0];
   if (text) renderStudentQuestions(text);
 }
 
 function prevStudentQuestion() {
   if (StudentState.currentQuestionIndex > 0) {
     StudentState.currentQuestionIndex--;
-    const text = TKA_DATA.texts.find(t => t.id === StudentState.selectedTextId);
+    const text = TKA_DATA.texts.find(t => String(t.id) === String(StudentState.selectedTextId || 1)) || TKA_DATA.texts[0];
     if (text) renderStudentQuestions(text);
   }
 }
 
 function saveAndNextStudentQuestion(qId) {
-  const text = TKA_DATA.texts.find(t => t.id === StudentState.selectedTextId);
-  const questions = TKA_DATA.questions.filter(q => q.textId === text.id);
+  const text = TKA_DATA.texts.find(t => String(t.id) === String(StudentState.selectedTextId || 1)) || TKA_DATA.texts[0];
+  const questions = TKA_DATA.questions.filter(q => String(q.textId) === String(text.id));
   if (StudentState.currentQuestionIndex < questions.length - 1) {
     StudentState.currentQuestionIndex++;
     renderStudentQuestions(text);
