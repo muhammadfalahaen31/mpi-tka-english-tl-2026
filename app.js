@@ -1170,7 +1170,7 @@ function renderFinalReview() {
   container.innerHTML = `
     <div class="dashboard-header" style="margin-bottom: 24px;">
       <h2 class="dashboard-title">🎓 FINAL TKA COMPREHENSIVE REPORT</h2>
-      <p class="dashboard-subtitle">Narrative Text Complete Evaluation (Questions 1–25)</p>
+      <p class="dashboard-subtitle">TKA English TL Complete Evaluation (Questions 16–25)</p>
     </div>
 
     <div class="final-review-grid">
@@ -1228,7 +1228,7 @@ function renderFinalReview() {
           <div style="display: flex; flex-wrap: wrap; gap: 12px;">
             <button class="btn btn-outline" onclick="startTestMode('random')">🎲 Random Mode</button>
             <button class="btn btn-outline" onclick="startTestMode('review_mistakes')">⚠️ Review Mistakes</button>
-            <button class="btn btn-primary" onclick="startTestMode('full_test')">⏱️ Full Test (25 Qs)</button>
+            <button class="btn btn-primary" onclick="startTestMode('full_test')">⏱️ Full Test (10 Qs)</button>
           </div>
         </div>
       </div>
@@ -1273,7 +1273,7 @@ function renderFullTestMode() {
 
   if (!currentQ) return;
 
-  let modeTitle = 'Full Test Mode (25 Questions)';
+  let modeTitle = 'Full Test Mode (10 Questions)';
   if (AppState.testMode === 'random') modeTitle = '🎲 Random Mode';
   if (AppState.testMode === 'review_mistakes') modeTitle = '⚠️ Review Mistakes Mode';
 

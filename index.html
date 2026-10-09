@@ -29,6 +29,7 @@
       <nav>
         <ul class="nav-links">
           <li class="nav-item active" data-view="dashboard" onclick="setView('dashboard')">📊 Dashboard</li>
+          <li class="nav-item" data-view="text_workspace" onclick="openTextWorkspace(1)">📖 Soal Latihan (16–25)</li>
           <li class="nav-item" data-view="vocab_lab" onclick="setView('vocab_lab')">📚 Vocabulary Lab</li>
           <li class="nav-item" data-view="tka_strategy" onclick="setView('tka_strategy')">🎯 TKA Strategy</li>
           <li class="nav-item" data-view="final_review" onclick="setView('final_review')">🎓 Final Report</li>
@@ -76,8 +77,8 @@
             </div>
 
             <div>
-              <button class="btn btn-primary btn-lg" onclick="setView('dashboard')">
-                🚀 START LEARNING
+              <button class="btn btn-primary btn-lg" onclick="openTextWorkspace(1)">
+                🚀 Buka Soal Latihan (Soal 16–25) →
               </button>
             </div>
           </div>
@@ -152,7 +153,7 @@
               <div class="hub-icon-box">📚</div>
               <div>
                 <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Vocabulary Lab</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">60 Kosakata sulit dari Text 1–4, Audio Pengucapan, Flip Cards & Matching Game.</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">20 Kosakata pilihan dari Text 1–2, Audio Pengucapan, Flip Cards & Matching Game.</p>
               </div>
             </div>
             <span class="btn btn-outline btn-sm">Open Lab →</span>
@@ -175,7 +176,7 @@
           <div class="stat-card">
             <div class="stat-icon">📝</div>
             <div>
-              <div class="stat-val" id="stat-total-questions">0/25</div>
+              <div class="stat-val" id="stat-total-questions">0/10</div>
               <div class="stat-label">Questions Completed</div>
             </div>
           </div>
@@ -196,7 +197,7 @@
           <div class="stat-card">
             <div class="stat-icon">📚</div>
             <div>
-              <div class="stat-val">60 Words</div>
+              <div class="stat-val">20 Words</div>
               <div class="stat-label">Vocabulary Bank</div>
             </div>
           </div>
@@ -211,12 +212,12 @@
         <div class="mode-triggers-grid">
           <div>
             <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">🚀 Complete Exam & Challenge Hub</h3>
-            <p style="font-size: 0.92rem; color: var(--text-muted);">Kerjakan simulasi ujian penuh (25 soal), acak urutan soal, atau fokus mendalami soal yang pernah salah.</p>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">Kerjakan simulasi latihan penuh (10 soal), acak urutan soal, atau fokus mendalami soal yang pernah salah.</p>
           </div>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
             <button class="btn btn-outline" onclick="startTestMode('random')">🎲 Random Mode</button>
             <button class="btn btn-outline" onclick="startTestMode('review_mistakes')">⚠️ Review Mistakes</button>
-            <button class="btn btn-primary" onclick="startTestMode('full_test')">⏱️ Full Test (25 Qs)</button>
+            <button class="btn btn-primary" onclick="startTestMode('full_test')">⏱️ Full Test (10 Qs)</button>
           </div>
         </div>
 

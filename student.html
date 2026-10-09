@@ -207,6 +207,7 @@
       <nav>
         <ul class="nav-links">
           <li class="nav-item active" data-view="dashboard" onclick="setStudentView('dashboard')">📊 Dashboard</li>
+          <li class="nav-item" data-view="student_workspace" onclick="openStudentWorkspace(1)">✏️ Lembar Kerja Soal (16–25)</li>
           <li class="nav-item" data-view="vocab_lab" onclick="setStudentView('vocab_lab')">📚 Vocabulary Lab</li>
           <li class="nav-item" data-view="tka_strategy" onclick="setStudentView('tka_strategy')">🎯 TKA Strategy</li>
           <li class="nav-item" data-view="worksheet_summary" onclick="setStudentView('worksheet_summary')">📋 Lembar Jawaban Saya</li>
@@ -270,7 +271,7 @@
               <div class="hub-icon-box" style="background: #dcfce7; color: #059669;">📚</div>
               <div>
                 <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Vocabulary Lab</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">60 Kosakata sulit, Audio Pengucapan, Flip Cards & Matching Game.</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">20 Kosakata pilihan, Audio Pengucapan, Flip Cards & Matching Game.</p>
               </div>
             </div>
             <span class="btn btn-outline btn-sm">Buka Lab →</span>
@@ -293,14 +294,14 @@
           <div class="stat-card">
             <div class="stat-icon" style="background: #dcfce7; color: #059669;">📝</div>
             <div>
-              <div class="stat-val" id="student-stat-answered">0/25</div>
+              <div class="stat-val" id="student-stat-answered">0/10</div>
               <div class="stat-label">Soal Terjawab</div>
             </div>
           </div>
           <div class="stat-card">
             <div class="stat-icon" style="background: var(--accent-cyan-light); color: var(--academic-blue);">✍️</div>
             <div>
-              <div class="stat-val" id="student-stat-reasoned">0/25</div>
+              <div class="stat-val" id="student-stat-reasoned">0/10</div>
               <div class="stat-label">Alasan Disertakan</div>
             </div>
           </div>

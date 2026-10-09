@@ -683,7 +683,7 @@ function renderStudentWorksheetSummary() {
         <div>
           <span class="badge badge-green" style="margin-bottom: 8px;">LEMBAR JAWABAN SISWA (STUDENT WORKSHEET)</span>
           <h2 style="font-size: 1.8rem; font-weight: 900; color: var(--text-main); margin-bottom: 4px;">MPI TKA Bahasa Inggris SMA — Tingkat Lanjut (TL)</h2>
-          <p style="font-size: 0.95rem; color: var(--text-muted);">Laporan Jawaban Mandiri & Justifikasi Alasan Bukti Teks (Questions 1–25)</p>
+          <p style="font-size: 0.95rem; color: var(--text-muted);">Laporan Jawaban Mandiri & Justifikasi Alasan Bukti Teks (Questions 16–25)</p>
         </div>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
           <button class="btn btn-primary" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
