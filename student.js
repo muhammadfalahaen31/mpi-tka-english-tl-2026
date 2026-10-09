@@ -43,7 +43,7 @@ function initStudentApp() {
   loadStudentTheme();
   loadStudentData();
   setupStudentEvents();
-  renderStudentApp();
+  openStudentWorkspace(1);
 }
 
 function loadStudentTheme() {

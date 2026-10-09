@@ -42,7 +42,7 @@ function initApp() {
   loadTheme();
   loadProgress();
   setupGlobalEvents();
-  renderApp();
+  openTextWorkspace(1);
 }
 
 function loadTheme() {
