@@ -3,7 +3,7 @@
 // With Split Side-by-Side Workspace & Global Vocab/Strategy Hub
 // ==========================================
 
-const STORAGE_KEY = 'mpi_tka_narrative_v1';
+const STORAGE_KEY = 'mpi_tka_english_tl_v1';
 const THEME_KEY = 'mpi_tka_theme';
 
 const AppState = {
@@ -189,10 +189,8 @@ function renderDashboard() {
   cardsContainer.innerHTML = '';
 
   const genreMeta = [
-    { genre: "Thai Legend & Myth", barClass: "theme-bar-1", excerpt: "Long ago, King U-Lue was a divine ruler of a magnificent city called Rattaphan Nakhon, located near the Mekong River..." },
-    { genre: "Folk Tale & Moral Journey", barClass: "theme-bar-2", excerpt: "In a quiet village near a dense forest, a hardworking miller lived with his beautiful daughter. One day, the miller was tricked by a mysterious dark figure..." },
-    { genre: "Philosophical Animal Fable", barClass: "theme-bar-3", excerpt: "Deep within a shadowy grove, a Nightingale sat upon a branch, pouring her heart into a melody that echoed through the trees..." },
-    { genre: "Ancient Sumerian Epic Myth", barClass: "theme-bar-4", excerpt: "In the ancient lands of Sumer, Inanna, the Queen of Heaven, decided to visit the Great Below, the underworld ruled by her sister Ereshkigal..." }
+    { genre: "Exposition & Economic Discussion", barClass: "theme-bar-1" },
+    { genre: "Educational & Neuroscientific Discussion", barClass: "theme-bar-2" }
   ];
 
   TKA_DATA.texts.forEach((text, idx) => {
@@ -209,7 +207,8 @@ function renderDashboard() {
 
     const isCompleted = tAnswered === textQuestions.length;
     const progressPercent = Math.round((tAnswered / textQuestions.length) * 100);
-    const meta = genreMeta[idx] || { genre: "Narrative Text", barClass: "theme-bar-1", excerpt: "" };
+    const meta = genreMeta[idx] || { genre: "Discussion & Exposition", barClass: `theme-bar-${(idx % 4) + 1}` };
+    const excerptText = text.paragraphs && text.paragraphs[0] ? text.paragraphs[0].substring(0, 140) + "..." : "";
 
     let statusBadge = `<span class="badge badge-gray">Not Started</span>`;
     if (isCompleted) {
@@ -229,7 +228,7 @@ function renderDashboard() {
         </div>
         <div class="text-module-genre">${meta.genre}</div>
         <h3 class="text-module-title">${text.title}</h3>
-        <p class="text-module-excerpt">"${meta.excerpt}"</p>
+        <p class="text-module-excerpt">"${excerptText}"</p>
         
         <div class="card-meta-chips">
           <span class="meta-chip">📝 ${text.questionRange}</span>
@@ -333,7 +332,7 @@ function renderWorkspacePractice(text) {
   let contentHtml = `
     <div class="q-badge-row">
       <span class="badge badge-blue">${currentQ.type}</span>
-      <span style="font-size: 0.9rem; font-weight: 800; color: var(--text-muted);">Question ${currentQ.number} of ${TKA_DATA.questions.length}</span>
+      <span style="font-size: 0.9rem; font-weight: 800; color: var(--text-muted);">Question ${qIndex + 1} of ${questions.length} (Soal #${currentQ.number})</span>
     </div>
 
     <div class="q-title-text">${escapeHtml(currentQ.question)}</div>
